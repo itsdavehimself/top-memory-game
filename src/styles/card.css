@@ -1,0 +1,52 @@
+.card {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 250px;
+  height: 312px;
+  box-shadow: 3px 3px 8px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding-top: 12px;
+  background-color: #f0f0f0;
+  color: #1b1b1b;
+  transition: transform 0.3s ease;
+}
+
+.card-picture {
+  height: 220px;
+  width: 220px;
+  display: grid;
+  justify-self: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-image {
+  height: 220px;
+  width: 220px;
+}
+
+.album-description {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: .85rem;
+  width: 250px;
+  padding-top: 8px;
+  font-weight: 700;
+}
+
+.album-year {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: .82rem;
+  padding-bottom: 10px;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}

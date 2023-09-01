@@ -1,0 +1,34 @@
+.play-again-screen {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 325px;
+  width: 250px;
+  background-color: #f0f0f0;
+  color: #1b1b1b;
+  border-radius: 8px;
+  box-shadow: 3px 3px 8px 1px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.play-again-btn>button{
+  border-radius: 8px;
+  border-style: none;
+  background-color: #e4d07c;
+  font-size: 1rem;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.play-again-btn>button:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.game-over {
+  font-size: 2rem;
+}
+
+.score-message {
+  font-size: 1.5rem;
+}
