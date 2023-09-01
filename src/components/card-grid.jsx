@@ -1,8 +1,9 @@
 import react, { useEffect, useState } from "react";
 import recordDataAPI from "./record-data";
 import Card from "./card";
+import "./card-grid.css";
 
-export default function CardGrid() {
+export default function CardGrid({ numOfCards }) {
   const [albumData, setAlbumData] = useState({
     imageURL: null,
     artistName: null,
@@ -16,24 +17,38 @@ export default function CardGrid() {
     setAlbumArr((prevAlbumArr) => [...prevAlbumArr, album]);
   };
 
+  const shuffleAlbums = () => {
+    const shuffledAlbums = [...albumArr];
+    for (let i = shuffledAlbums.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledAlbums[i], shuffledAlbums[j]] = [
+        shuffledAlbums[j],
+        shuffledAlbums[i],
+      ];
+    }
+    setAlbumArr(shuffledAlbums);
+  };
+
   useEffect(() => {
-    recordDataAPI()
-      .then((albumData) => {
-        setAlbumData({
-          imageURL: albumData.imageURL,
-          artistName: albumData.artistName,
-          albumName: albumData.albumName,
-          albumYear: albumData.albumYear,
+    for (let i = 0; i < numOfCards; i += 1) {
+      recordDataAPI(i)
+        .then((albumData) => {
+          setAlbumData({
+            imageURL: albumData.imageURL,
+            artistName: albumData.artistName,
+            albumName: albumData.albumName,
+            albumYear: albumData.albumYear,
+          });
+          addAlbum(albumData);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
         });
-        addAlbum(albumData);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+    }
+  }, [numOfCards]);
 
   return (
-    <div>
+    <div className="card-grid">
       {albumArr.map((album, index) => (
         <Card
           key={index}
@@ -41,6 +56,7 @@ export default function CardGrid() {
           artist={album.artistName}
           albumTitle={album.albumName}
           year={album.albumYear}
+          onClick={shuffleAlbums}
         ></Card>
       ))}
     </div>
