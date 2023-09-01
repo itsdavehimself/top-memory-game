@@ -32,26 +32,30 @@ function App() {
 
   return (
     <div className="app">
-      <Score score={score} highScore={highScore} />
-      {isGameOver ? (
-        <PlayAgainScreen
-          setIsGameOver={setIsGameOver}
-          setCurrentLevel={setCurrentLevel}
-          lastScore={lastScore}
-        />
-      ) : (
-        <CardGrid
-          numOfCards={numCardsDisplay()}
-          setIsGameOver={setIsGameOver}
-          currentLevel={currentLevel}
-          setCurrentLevel={setCurrentLevel}
-          score={score}
-          setScore={setScore}
-          highScore={highScore}
-          setHighScore={setHighScore}
-          setLastScore={setLastScore}
-        />
-      )}
+      <header className="header">
+        <Score score={score} highScore={highScore} />
+      </header>
+      <div className="main-section">
+        {isGameOver ? (
+          <PlayAgainScreen
+            setIsGameOver={setIsGameOver}
+            setCurrentLevel={setCurrentLevel}
+            lastScore={lastScore}
+          />
+        ) : (
+          <CardGrid
+            numOfCards={numCardsDisplay()}
+            setIsGameOver={setIsGameOver}
+            currentLevel={currentLevel}
+            setCurrentLevel={setCurrentLevel}
+            score={score}
+            setScore={setScore}
+            highScore={highScore}
+            setHighScore={setHighScore}
+            setLastScore={setLastScore}
+          />
+        )}
+      </div>
     </div>
   );
 }
