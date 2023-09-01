@@ -1,4 +1,4 @@
-import "./card.css";
+import "/src/styles/card.css";
 
 export default function Card({ image, artist, albumTitle, year, onClick }) {
   return (

@@ -1,7 +1,7 @@
 import react, { useEffect, useState } from "react";
 import recordDataAPI from "./record-data";
 import Card from "./card";
-import "./card-grid.css";
+import "/src/styles/card-grid.css";
 
 export default function CardGrid({
   numOfCards,

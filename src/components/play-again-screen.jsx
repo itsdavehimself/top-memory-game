@@ -1,3 +1,5 @@
+import "/src/styles/play-again-screen.css";
+
 export default function PlayAgainScreen({
   setIsGameOver,
   setCurrentLevel,
@@ -9,10 +11,10 @@ export default function PlayAgainScreen({
   };
 
   return (
-    <div className="modal">
+    <div className="play-again-screen">
+      <div className="game-over">Game over</div>
+      <div className="score-message">Your score: {lastScore}</div>
       <div className="play-again-btn">
-        <div>Game over</div>
-        <div>Your score: {lastScore}</div>
         <button onClick={handlePlayAgainClick}>Play Again?</button>
       </div>
     </div>
