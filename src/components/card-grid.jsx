@@ -12,6 +12,7 @@ export default function CardGrid({
   setScore,
   highScore,
   setHighScore,
+  setLastScore,
 }) {
   const [albumData, setAlbumData] = useState({
     imageURL: null,
@@ -46,9 +47,9 @@ export default function CardGrid({
       ...prevClickedAlbums,
       albumToFind,
     ]);
-    console.log(clickedAlbumsArr);
     if (clickedAlbumsArr.includes(albumToFind)) {
       setIsGameOver(true);
+      setLastScore(score);
       setScore(0);
     } else {
       setScore(score + 1);

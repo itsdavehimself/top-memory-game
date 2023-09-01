@@ -2,10 +2,12 @@ import "./App.css";
 import { useState } from "react";
 import CardGrid from "./components/card-grid";
 import Score from "./components/scores";
+import PlayAgainScreen from "./components/play-again-screen";
 
 function App() {
   const [isGameOver, setIsGameOver] = useState(false);
 
+  const [lastScore, setLastScore] = useState(0);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
 
@@ -26,7 +28,13 @@ function App() {
   return (
     <>
       <Score score={score} highScore={highScore} />
-      {!isGameOver && (
+      {isGameOver ? (
+        <PlayAgainScreen
+          setIsGameOver={setIsGameOver}
+          setCurrentLevel={setCurrentLevel}
+          lastScore={lastScore}
+        />
+      ) : (
         <CardGrid
           numOfCards={numCardsDisplay()}
           setIsGameOver={setIsGameOver}
@@ -36,6 +44,7 @@ function App() {
           setScore={setScore}
           highScore={highScore}
           setHighScore={setHighScore}
+          setLastScore={setLastScore}
         />
       )}
     </>
