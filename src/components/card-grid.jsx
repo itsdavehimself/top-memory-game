@@ -3,7 +3,16 @@ import recordDataAPI from "./record-data";
 import Card from "./card";
 import "./card-grid.css";
 
-export default function CardGrid({ numOfCards }) {
+export default function CardGrid({
+  numOfCards,
+  setIsGameOver,
+  setCurrentLevel,
+  currentLevel,
+  score,
+  setScore,
+  highScore,
+  setHighScore,
+}) {
   const [albumData, setAlbumData] = useState({
     imageURL: null,
     artistName: null,
@@ -17,6 +26,8 @@ export default function CardGrid({ numOfCards }) {
     setAlbumArr((prevAlbumArr) => [...prevAlbumArr, album]);
   };
 
+  const [clickedAlbumsArr, setClickedAlbumsArr] = useState([]);
+
   const shuffleAlbums = () => {
     const shuffledAlbums = [...albumArr];
     for (let i = shuffledAlbums.length - 1; i > 0; i--) {
@@ -27,6 +38,34 @@ export default function CardGrid({ numOfCards }) {
       ];
     }
     setAlbumArr(shuffledAlbums);
+  };
+
+  const storeClicked = (index) => {
+    const albumToFind = albumArr[index].albumName;
+    setClickedAlbumsArr((prevClickedAlbums) => [
+      ...prevClickedAlbums,
+      albumToFind,
+    ]);
+    console.log(clickedAlbumsArr);
+    if (clickedAlbumsArr.includes(albumToFind)) {
+      setIsGameOver(true);
+      setScore(0);
+    } else {
+      setScore(score + 1);
+      if (score + 1 > highScore) {
+        setHighScore(score + 1);
+      }
+    }
+    if (clickedAlbumsArr.length === numOfCards - 1) {
+      setAlbumArr([]);
+      setClickedAlbumsArr([]);
+      setCurrentLevel(currentLevel + 1);
+    }
+  };
+
+  const clickHandler = (index) => {
+    shuffleAlbums();
+    storeClicked(index);
   };
 
   useEffect(() => {
@@ -56,7 +95,7 @@ export default function CardGrid({ numOfCards }) {
           artist={album.artistName}
           albumTitle={album.albumName}
           year={album.albumYear}
-          onClick={shuffleAlbums}
+          onClick={() => clickHandler(index)}
         ></Card>
       ))}
     </div>
