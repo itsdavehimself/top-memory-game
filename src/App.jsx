@@ -17,6 +17,11 @@ function App() {
     { level: 3, cards: 8 },
     { level: 4, cards: 10 },
     { level: 5, cards: 12 },
+    { level: 6, cards: 14 },
+    { level: 7, cards: 16 },
+    { level: 8, cards: 18 },
+    { level: 9, cards: 20 },
+    { level: 10, cards: 22 },
   ];
 
   const [currentLevel, setCurrentLevel] = useState(1);
@@ -26,7 +31,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="app">
       <Score score={score} highScore={highScore} />
       {isGameOver ? (
         <PlayAgainScreen
@@ -47,7 +52,7 @@ function App() {
           setLastScore={setLastScore}
         />
       )}
-    </>
+    </div>
   );
 }
 
