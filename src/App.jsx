@@ -34,6 +34,12 @@ function App() {
     <div className="app">
       <header className="header">
         <Score score={score} highScore={highScore} />
+        <div className="game-description">
+          <div className="title">Memory Game</div>
+          <div className="instructions">
+            Click each album, don&apos;t click twice!
+          </div>
+        </div>
       </header>
       <div className="main-section">
         {isGameOver ? (
