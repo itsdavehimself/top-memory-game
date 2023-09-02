@@ -1,9 +1,60 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url(/src/assets/fonts/Roboto-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Robot';
+  src: url(/src/assets/fonts/Roboto-ThinItalic.ttf);
+  font-weith: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(/src/assets/fonts/Roboto-Thin.ttf);
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(/src/assets/fonts/Roboto-Medium.ttf);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(/src/assets/fonts/Roboto-Light.ttf);
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(/src/assets/fonts/Roboto-Bold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(/src/assets/fonts/Roboto-Black.ttf);
+  font-weight: 900;
+  font-style: normal;
+}
+
+
 body {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .8)), url(./assets/background-image.jpg);
   background-size: cover; 
   background-repeat: no-repeat; 
   background-position: center;
   margin: 0;
+  font-family: Roboto;
 }
 
 .app {
@@ -13,9 +64,33 @@ body {
   margin: 0;
 }
 
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.title {
+  font-size: 1.3rem;
+}
+
 .main-section {
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
+}
+
+.game-description {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  justify-self: end;
+  background-color: #f8f8f8;
+  height: 80px;
+  width: 260px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 8px 1px rgba(0, 0, 0, 0.2);
+  margin: 12px;
+  font-size: 1rem;
 }
